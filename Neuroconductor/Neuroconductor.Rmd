@@ -18,10 +18,7 @@ address:
   - code: JHU
     address: Johns Hopkins Bloomberg School of Public Health, Department of Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205
 abstract: |
-  This is the abstract.
-
-  It consists of two paragraphs.
-
+    The Neuroconductive project is an initiative for the collaborative creation of extensible software for computational imaging analysis, with a focus on neuroimaging. The goals of the project include: integrate fast and collaborative development of tested software, increasing reproducibility in analyses of imaging data, and promoting the achievement of remote reproducibility of research results. We describe details of our goals, identify the current implementation and current challenges, and provide examples of existing software and how they would integrate into the Neuroconductor system.
 bibliography: mybibfile.bib
 output: rticles::elsevier_article
 ---
@@ -47,8 +44,32 @@ R is increasing in popularity, with there being over 9,000 package now on the Co
 - FSL
 - AFNI
 - FREESURFER
+- SPM
 
+
+We will refer to R-Forge, OmegaHat, Bioconductor, and CRAN as standard repositories.
 ## TRAVIS
+
+## Devtools
+
+In YEAR, Hadley and RStudio had published the `devtools` package.  The `devtools` package provided the tools to install R packages from a multitude of sources.  The Neuroconductor relies on the installation script for R packages on GitHub.  Moreover, it allowed for the introduction of a flag in the installation of an R package (the `Remotes:` field) that allowed users specify a dependency for the package that can be located on a source that is not a standard repository.  Previous to this, if a package depended on a package that was not in a standard repository, the user would have to manually install that dependency before installing the package in question.
+
+In addition to installing packages from GitHub, there are additional options to the installer scripts, which allow users to install specific snapshots of these packages.  These snapshots can be based on GitHub commit identifiers (IDs), tags, or referrences.  
+
+The `remotes` package provides a lightweight version of the `devtools` package for installing from non-standard and standard sources.
+ 
+In addition to the install functions, the `devtools` package allows for a up-to-date R package development system.  The RStudio IDE integrates the `devtools` package so that R package development can be done in a more standardized way. 
+ 
+ 
+### DRAT
+
+The `drat` (Drat R Archive Template) package has provided a template to set up a repository similar to CRAN mirrors and other standard sources.  One of the large benefits of using a drat repository is that users can use the default way of installing packages in R (`install.packages`) versus that from `devtools` (e.g. `install_github`) and requires no additional dependencies such as `devtools` or `remotes`.
+
+One good example of a drat repository is [ROpenSci](https://ropensci.org/), which has a series of packages that are based on GitHub.  The only additional step for installing from a drat repository is to specify the `repos` argument in `install.packages`:  `install.packages("package_name", repos="http://path/to/drat/repo")`.  
+
+
+
+GitHub and not the 
 
 # Bioconductor
 
@@ -56,6 +77,7 @@ In 2004, the Bioconductor system enabled the bioinformatics and genomics work of
 
 ## Data Packages
 Like Bioconductor, we need data packages that allow users to test software and examples on.
+
 
 # References {#references .unnumbered}
 
