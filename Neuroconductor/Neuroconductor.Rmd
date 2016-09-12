@@ -1,0 +1,39 @@
+---
+title: Segmentation of Gadolinium-Enhancing Lesions
+author:
+  - name: John Muschelli
+    email: jmusche1@jhu.edu
+    affiliation: JHU
+    footnote: Corresponding Author
+  - name: Adrian Gherman
+    email: adig@jhu.edu
+    affiliation: JHU
+  - name: Brian S. Caffo
+    email: bcaffo@jhsph.edu
+    affiliation: JHU
+  - name: Ciprian M. Crainiceanu
+    email: ccraini1@jhu.edu 
+    affiliation: JHU
+address:
+  - code: JHU
+    address: Johns Hopkins Bloomberg School of Public Health, Department of Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205
+abstract: |
+  This is the abstract.
+
+  It consists of two paragraphs.
+
+bibliography: mybibfile.bib
+output: rticles::elsevier_article
+---
+
+
+# Introduction
+
+
+
+# Bioconductor
+
+Here are two sample references: @gentleman2004bioconductor.
+
+# References {#references .unnumbered}
+
