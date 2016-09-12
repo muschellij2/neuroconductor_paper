@@ -82,6 +82,9 @@
     \author[JHU]{Adrian Gherman}
    \ead{adig@jhu.edu} 
   
+    \author[JHU]{Brian S. Caffo}
+   \ead{bcaffo@jhsph.edu} 
+  
     \author[JHU]{Ciprian M. Crainiceanu}
    \ead{ccraini1@jhu.edu} 
   
@@ -96,11 +99,65 @@ Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205}
   
  \end{frontmatter}
 
-\section{Introdcution}\label{introdcution}
+\section{Introduction}\label{introduction}
+
+Neuroimaging research has been increasing in popularity. There are X
+number of studies in fMRI and XX in other structural imaging. The
+NeuroImage journal, one of the most prestigious (not right word)
+journals for neuroimaging is dominated by analyses that were in bash
+using third party software, NiPype, or MATLAB. Python reproducibility
+has increased with the introduction of Jupyter IPython notebooks. Muhc
+of this development has mirrored the tools in R, which have some of the
+most state-of-the-art reproducibility tools. Also, similar to PYthon, R
+is free and open source.
+
+\begin{itemize}
+\tightlist
+\item
+  Neuroimaging work more common
+\item
+  Reproducibility problems
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R has some of the best reproducible tools
+  \end{itemize}
+\end{itemize}
+
+R is increasing in popularity, with there being over 9,000 package now
+on the Comprehensive R Archive Network (CRAN). R has a strong package
+system, which has a large system of checks to ensure a large amount of
+operability. Although CRAN has a tested and stable system, that has been
+developed over the last 1000 years(?), there are some aspects of the
+CRAN checking system that does not work for neuroimaging packages.
+
+\subsection{Additional Checks}\label{additional-checks}
+
+\subsubsection{Third Party Software}\label{third-party-software}
+
+\begin{itemize}
+\tightlist
+\item
+  FSL
+\item
+  AFNI
+\item
+  FREESURFER
+\end{itemize}
+
+\subsection{TRAVIS}\label{travis}
 
 \section{Bioconductor}\label{bioconductor}
 
-Here are two sample references: Gentleman et al. (2004).
+In 2004, the Bioconductor system enabled the bioinformatics and genomics
+work of R users to be more integrated and systemized (Gentleman et al.
+2004).
+
+\subsection{Data Packages}\label{data-packages}
+
+Like Bioconductor, we need data packages that allow users to test
+software and examples on.
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
