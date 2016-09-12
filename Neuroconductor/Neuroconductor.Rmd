@@ -48,7 +48,6 @@ R is increasing in popularity, with there being over 9,000 package now on the Co
 
 
 We will refer to R-Forge, OmegaHat, Bioconductor, and CRAN as standard repositories.
-## TRAVIS
 
 ## Devtools
 
@@ -60,6 +59,16 @@ The `remotes` package provides a lightweight version of the `devtools` package f
  
 In addition to the install functions, the `devtools` package allows for a up-to-date R package development system.  The RStudio IDE integrates the `devtools` package so that R package development can be done in a more standardized way. 
  
+## GitHub
+GitHub APi.  Git vs. svn.  
+
+## TRAVIS
+
+Seperately from any development in the R community, continuous integration (CI) 
+services have become largely available that allows for automated building and checking 
+of software.  The Travis CI is a "hosted, distributed continuous integration service used to build and test software projects hosted at GitHub".  In conjuction with the R community, Travis CI has configured the ability to seamlessly check R packages on multiple systems.  In addition to the GitHub API described above, the Travis CI API provides an automated system for checking R package installation.  
+
+
  
 ### DRAT
 
@@ -67,9 +76,6 @@ The `drat` (Drat R Archive Template) package has provided a template to set up a
 
 One good example of a drat repository is [ROpenSci](https://ropensci.org/), which has a series of packages that are based on GitHub.  The only additional step for installing from a drat repository is to specify the `repos` argument in `install.packages`:  `install.packages("package_name", repos="http://path/to/drat/repo")`.  
 
-
-
-GitHub and not the 
 
 # Bioconductor
 

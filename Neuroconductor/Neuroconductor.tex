@@ -155,7 +155,7 @@ CRAN checking system that does not work for neuroimaging packages.
 \end{itemize}
 
 We will refer to R-Forge, OmegaHat, Bioconductor, and CRAN as standard
-repositories. \#\# TRAVIS
+repositories.
 
 \subsection{Devtools}\label{devtools}
 
@@ -184,6 +184,22 @@ allows for a up-to-date R package development system. The RStudio IDE
 integrates the \texttt{devtools} package so that R package development
 can be done in a more standardized way.
 
+\subsection{GitHub}\label{github}
+
+GitHub APi. Git vs.~svn.
+
+\subsection{TRAVIS}\label{travis}
+
+Seperately from any development in the R community, continuous
+integration (CI) services have become largely available that allows for
+automated building and checking of software. The Travis CI is a
+``hosted, distributed continuous integration service used to build and
+test software projects hosted at GitHub''. In conjuction with the R
+community, Travis CI has configured the ability to seamlessly check R
+packages on multiple systems. In addition to the GitHub API described
+above, the Travis CI API provides an automated system for checking R
+package installation.
+
 \subsubsection{DRAT}\label{drat}
 
 The \texttt{drat} (Drat R Archive Template) package has provided a
@@ -200,8 +216,6 @@ that are based on GitHub. The only additional step for installing from a
 drat repository is to specify the \texttt{repos} argument in
 \texttt{install.packages}:
 \texttt{install.packages("package\_name",\ repos="http://path/to/drat/repo")}.
-
-GitHub and not the
 
 \section{Bioconductor}\label{bioconductor}
 
