@@ -42,6 +42,7 @@
   \fi
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
+  \newcommand{\fixme}[1]{{\color{red} #1}}
 \fi
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
@@ -68,6 +69,7 @@
 % Pandoc toggle for numbering sections (defaults to be off)
 \setcounter{secnumdepth}{0}
 % Pandoc header
+  \newcommand{\fixme}[1]{{\color{red} #1}}
 
 
 \usepackage[nomarkers]{endfloat}
@@ -75,7 +77,7 @@
 \begin{document}
 \begin{frontmatter}
 
-  \title{Segmentation of Gadolinium-Enhancing Lesions}
+  \title{The Neuroconductor project}
     \author[JHU]{John Muschelli\corref{c1}}
    \ead{jmusche1@jhu.edu} 
    \cortext[c1]{Corresponding Author}
@@ -92,7 +94,7 @@
 Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205}
   
   \begin{abstract}
-  The Neuroconductive project is an initiative for the collaborative
+  The Neuroconductor project is an initiative for the collaborative
   creation of extensible software for computational imaging analysis, with
   a focus on neuroimaging. The goals of the project include: integrate
   fast and collaborative development of tested software, increasing
@@ -100,19 +102,20 @@ Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205}
   achievement of remote reproducibility of research results. We describe
   details of our goals, identify the current implementation and current
   challenges, and provide examples of existing software and how they would
-  integrate into the Neuroconductor system.
+  integrate into the Neuroconductor system. \fixme{The Neuroconductor project offers an easy and unifited framework in R for the preprocessing and advanced statistical analysis of imaging data.  }
   \end{abstract}
   
  \end{frontmatter}
 
+% Introduction
 \section{Introduction}\label{introduction}
 
-Neuroimaging research has been increasing in popularity. There are X
-number of studies in fMRI and XX in other structural imaging. The
+Neuroimaging research has been increasing in popularity. There are \fixme{XX}
+number of studies in fMRI and \fixme{XX} in other structural imaging. \fixme{Talk about big projects like ADNI, ABIDE, 1000 Functional connectomes, etc}.  The
 NeuroImage journal, one of the most prestigious (not right word)
 journals for neuroimaging is dominated by analyses that were in bash
 using third party software, NiPype, or MATLAB. Python reproducibility
-has increased with the introduction of Jupyter IPython notebooks. Muhc
+has increased with the introduction of Jupyter IPython notebooks. Much
 of this development has mirrored the tools in R, which have some of the
 most state-of-the-art reproducibility tools. Also, similar to PYthon, R
 is free and open source.
@@ -137,6 +140,14 @@ system, which has a large system of checks to ensure a large amount of
 operability. Although CRAN has a tested and stable system, that has been
 developed over the last 1000 years(?), there are some aspects of the
 CRAN checking system that does not work for neuroimaging packages.
+
+\fixme{Several of the statistical challenges encountered in the analysis of imaging data are shared with the field of genomics. An example of a statistical problem common to both imaging and genomic data is the presence of between-subject variability that is technical in nature, for instance the well-known batch effects (CITE) seen in genomics, due to different preprocessing dates, similar to between-scanner variability seen in large multi-site imaging studies (CITE). I want to say something like the Neuroconductor project will allow to integrate well-developed and robust statistical methods for handling such challenges, and it will make easy to adapt genomic tools to the world of brain imaging.
+
+Talk about ComBat, SVA, and limma; maybe mention how popular they are by number of citations? Wondering if we could have one showcase section where we show that just using the Empirical Bayes function in limma automatically improves the statistical analysis of brain imaging data; that would sell Neuroconductor big deal. }
+
+
+\fixme{Other note: mention the cluster PNAS paper; we want to avoid such situations in the future; we need clear, reproducible and well-implemented statistical methods, and R is the perfect platform for that. We need to think: what can we do better in R that no other language/software can offer?}
+
 
 \subsection{Additional Checks}\label{additional-checks}
 
@@ -217,11 +228,14 @@ drat repository is to specify the \texttt{repos} argument in
 \texttt{install.packages}:
 \texttt{install.packages("package\_name",\ repos="http://path/to/drat/repo")}.
 
+% Data packages
+\section{Data packages and atlases}\label{datapackages}
+
 \section{Bioconductor}\label{bioconductor}
 
 In 2004, the Bioconductor system enabled the bioinformatics and genomics
 work of R users to be more integrated and systemized (Gentleman et al.
-2004) Gentleman et al. (2004) .
+2004).
 
 \subsection{Data Packages}\label{data-packages}
 
@@ -237,6 +251,31 @@ Gentleman, Robert C, Vincent J Carey, Douglas M Bates, Ben Bolstad,
 Marcel Dettling, Sandrine Dudoit, Byron Ellis, et al. 2004.
 ``Bioconductor: Open Software Development for Computational Biology and
 Bioinformatics.'' \emph{Genome Biology} 5 (10). BioMed Central: 1.
+
+% Table 
+\begin{table}[!ht]
+\footnotesize
+\centering
+\caption{\textbf{Initial Neuroconductor packages.}}\label{tab:summary}
+\begin{tabular}{lllcl}
+\hline \\[-2ex]
+\textbf{Package} & \textbf{Description} & \textbf{Popular functions and applications} & \textbf{Reference} \\
+\hline \\ [-1.5ex]
+\texttt{oro.nifti} &  &  & &   \\ [1ex]
+\texttt{freesurfer} & &  & \\ [1ex]
+ \texttt{fslr} &  & &   \\ [1ex]
+ \texttt{brainR} &  &  &    \\ [1ex]
+ \texttt{papayar} &  &  &    \\ [1ex]
+   \texttt{ANTsR} & R Package for ANTS &   \\ [1ex]
+  \texttt{drammsr} & R Package for DRAMMS & 
+  DRAMMS registration, RAVENS maps  \\ [1ex]
+ \texttt{WhiteStripe} & Intensity normalization with White Stripe & & &   \\ [1ex]
+   \texttt{RAVEL} & Stratified quantile normalization &&&  \\ [1ex]
+     \texttt{oasisr} &  &&&  \\ [1ex]
+     \texttt{shrinkR} &  &&&  \\ [1ex]
+\hline
+\end{tabular}
+\end{table}
 
 \end{document}
 
