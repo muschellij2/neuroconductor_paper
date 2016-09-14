@@ -26,14 +26,46 @@ output: rticles::elsevier_article
 
 # Introduction
 
-Neuroimaging research has been increasing in popularity.  There are X number of studies in fMRI and XX in other structural imaging.  The NeuroImage journal, one of the most prestigious (not right word) journals for neuroimaging is dominated by analyses that were in bash using third party software, NiPype, or MATLAB.  Python reproducibility has increased with the introduction of Jupyter IPython notebooks.  Muhc of this development has mirrored the tools in R, which have some of the most state-of-the-art reproducibility tools.  Also, similar to PYthon, R is free and open source.
+Neuroimaging research has been increasing in popularity.  There are X
+number of studies in fMRI and XX in other structural imaging.  Both
+NeuroImage and Human Brain Mapping journals, two key journals for
+neuroimaging methodology and analysis, are dominated by analyses that
+used (typically *nix) commandline software, such as FSL or AFNI or
+custom C, C++ or python software, ran in Matlab via SPM or custom
+Matlab scripts, or used pipelining software, such as NiPype or
+LONI. The heterogeneous nature of neuroimaging software has led to a
+difficult circumstance for reproducing analyses across and often
+hinders entrance into the community. Efforts such as NiPype, SPM and
+related tools, have made great strides, since python and Matlab are
+such popular scripting languages for analysis, and have robust
+implementations across all popular opperating systems and
+environments.  Creating reproducible python analyses and processing
+has notably improved, in particular,
+with the introduction of Jupyter IPython notebooks. 
 
+
+The R scripting language has much to offer as a potential environment
+for neuroimaging data analysis *CITE ANI'S ARTICLE AND THE NEUROIMAGE
+ARTICLES ABOUT R*. Like python, R is open source, free and robustly
+implemented across every major computing environment and OS. It is
+also has a very large user base *NUMBERS* as well a highly developed
+and motivated open source developer base, creating an enormous
+collection of statistics and machine learning packages.  As such, R is
+increasing in popularity, with over 9,000 package now on the
+Comprehensive R Archive Network (CRAN).  R has a strong package
+authoring and management system, which has a large system of checks to
+ensure inter-operability.  Although CRAN has a tested and
+stable system, that has been developed over the last 1000 years(?),
+there are some aspects of the CRAN checking system that does not work
+for neuroimaging packages.
+
+Recent advances 
+in R have made multi-threading, GPU processing and parallel 
+processing trivial. 
 
 - Neuroimaging work more common
 - Reproducibility problems
     - R has some of the best reproducible tools
-    
-R is increasing in popularity, with there being over 9,000 package now on the Comprehensive R Archive Network (CRAN).  R has a strong package system, which has a large system of checks to ensure a large amount of operability.  Although CRAN has a tested and stable system, that has been developed over the last 1000 years(?), there are some aspects of the CRAN checking system that does not work for neuroimaging packages.
 
 
 
