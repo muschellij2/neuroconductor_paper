@@ -1,5 +1,5 @@
 ---
-title: Segmentation of Gadolinium-Enhancing Lesions
+title: "Neuroconductor: Being Awesome in R"
 author:
   - name: John Muschelli
     email: jmusche1@jhu.edu
@@ -41,6 +41,7 @@ R is increasing in popularity, with there being over 9,000 package now on the Co
 
 
 ### Third Party Software
+
 - FSL
 - AFNI
 - FREESURFER
