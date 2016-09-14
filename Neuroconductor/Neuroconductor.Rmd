@@ -47,25 +47,40 @@ with the introduction of Jupyter IPython notebooks.
 The R scripting language has much to offer as a potential environment
 for neuroimaging data analysis *CITE ANI'S ARTICLE AND THE NEUROIMAGE
 ARTICLES ABOUT R*. Like python, R is open source, free and robustly
-implemented across every major computing environment and OS. It is
-also has a very large user base *NUMBERS* as well a highly developed
-and motivated open source developer base, creating an enormous
-collection of statistics and machine learning packages.  As such, R is
-increasing in popularity, with over 9,000 package now on the
-Comprehensive R Archive Network (CRAN).  R has a strong package
-authoring and management system, which has a large system of checks to
-ensure inter-operability.  Although CRAN has a tested and
-stable system, that has been developed over the last 1000 years(?),
-there are some aspects of the CRAN checking system that does not work
-for neuroimaging packages.
+implemented across every major computing environment and OS. It also
+has a very large and growing user base *NUMBERS* as well a highly
+developed and motivated open source developer base, creating an
+enormous collection of statistics and machine learning packages.
+Recent advances in R have made multi-threading, GPU processing and
+parallel processing trivial. Moreover, with knitr, R has one of the
+most robust tools for reproducible research. In addition, interactive
+web app development is now possible (and easy) with shiny. Finally,
+the RStudio environment gives a powerful and popular IDE for R.
 
-Recent advances 
-in R have made multi-threading, GPU processing and parallel 
-processing trivial. 
+R has a strong package authoring and management system, which has a
+large system of checks to ensure inter-operability inspiring. The
+Comprehensive R Archive Network (CRAN) is a primary repository for R
+packages. In addition, domain specific repositories, notably
+Bioconductor, also host a large number of packages. A legion of
+developers, coupled with dedicated repository maintainers and mirrors
+and the amazing growth of packages with over 9,000 package at last
+count on CRAN alone. CRAN maintains "task views" to list packages
+relevant for specific domains. The medical imaging task view lists
+27 packages for medical image analysis. 
 
-- Neuroimaging work more common
-- Reproducibility problems
-    - R has some of the best reproducible tools
+CRAN has numerous limitations as a community repository for a domain,
+such as medical or neuro imaging.  Some of the key shortcomings to be
+addressed include: stricter package requirements in the form of
+documentation and style, version control integration, development
+versions of packages, continuous integration and lower repository
+maintainer requirements / involvement.  In computational biology, the
+Bioconductor repository was created to address some of these
+shortcomings. However, since the creation of CRAN and Bioconductor, 
+several new developments have occurred to inspire the creation of 
+a package repository specific to Neuroimaging. An influential
+development is the overwhelming use of git and github for version
+control and package development. In addition, continuous integration
+tools, like travis.ci allow package building in the cloud. 
 
 
 
