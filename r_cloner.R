@@ -52,9 +52,9 @@ parse_one_remote <- function(x) {
 # Clone stuff
 ##########################################
 base_path = "/dcl01/smart/data/structural/neuroc/packages"
-# stub = "muschellij2/extrantsr"
-stub = "jfortin1/RAVEL"
-base_url = "http://github.com/"
+stub = "muschellij2/extrantsr"
+# stub = "jfortin1/RAVEL"
+gh_url = base_url = "http://github.com/"
 url = paste0(base_url, stub)
 
 pkg = devtools:::parse_git_repo(stub)
@@ -84,10 +84,17 @@ if (!dir.exists(local_path)) {
   }
 }
 
+if (!"neuroc" %in% remotes(repo)) {
+  neuroc_url = paste0(gh_url, "neuroconductor", "pkg")
+  remote_add(repo = repo, "neuroc", neuroc_url)
+}
+
 deps = dev_package_deps(pkg = local_path,
                         dependencies = TRUE)
 dep_pack = deps$package
 dcf = file.path(local_path, "DESCRIPTION")
+orig_dcf = tempfile()
+file.copy(dcf, orig_dcf)
 rres = read_dcf(dcf)
 fields = rres$fields
 res = rres$dcf
@@ -152,11 +159,14 @@ if (nrow(neuro_deps) > 0) {
   res$Remotes = fixed_remotes
 } 
 res = as.data.frame(res, stringsAsFactors = FALSE)
-##############################
-# CHANGE CRAP
-##############################
 
 write.dcf(x = res, file = dcf, keep.white = fields)
+
+
+# save(repo, dcf)
+##############################
+# R COMMAND CHECK
+##############################
 
 add(repo, path = dcf)
 stat = status(repo)
@@ -164,4 +174,15 @@ staged = stat$staged$modified
 if (length(staged) > 0) { 
   commit(repo, message = "neuroc_ready")
 }
+
 ### add biocViews
+
+
+check_stat = devtools::check(pkg = local_path)
+errors = check_stat$errors
+warns = check_stat$warnings
+# checker = errors
+checker = c(errors, warns)
+if (length(checker) > 0) {
+  file.copy(from = orig_dcf, to = dcf, overwrite = TRUE)
+}
