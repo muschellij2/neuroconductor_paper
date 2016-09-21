@@ -83,6 +83,15 @@ control and package development. In addition, continuous integration
 tools, like travis.ci allow package building in the cloud. 
 
 
+## Goals of Neuroconductor
+
+1.  Lower the bar to imaging in R
+2.  Standardization of syntax similar to NiPype
+
+### Why R?
+3.  Leverage R resources/plotting/reproducibility/package development 
+4.  Leverage Bioconductor resources - they have similar problems, years of testing, and code
+5.  Bayesian Statistics 
 
 ## Additional Checks
 
