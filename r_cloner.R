@@ -1,88 +1,33 @@
 rm( list = ls())
 library(git2r)
 library(devtools)
+source("worker_functions.R")
 set.seed(1)
 neuroc_packages = c("oro.nifti", "fslr", "neurobase", "ANTsR")
 neuroc_table = data.frame(package = neuroc_packages,
                           stringsAsFactors = FALSE)
 neuroc_table$commit = sample(letters, size = nrow(neuroc_table))
 
-read_dcf <- function(path) {
-  fields <- colnames(read.dcf(path))
-  dcf = as.list(read.dcf(path, keep.white = fields, all = TRUE)[1, ])
-  return(list(fields = fields,
-              dcf = dcf))
-}
-
-get_remotes = function(x){
-  remotes = x$Remotes[[1]]
-  remotes = trimws(remotes)
-  if (is.null(remotes)) {
-    remotes = ""
-  }
-  return(remotes)
-}
-
-split_remotes <- function(x) {
-  trimws(unlist(strsplit(x, ",[[:space:]]*")))
-}
-
-
-
-parse_one_remote <- function(x) {
-  pieces <- strsplit(x, "::", fixed = TRUE)[[1]]
-  
-  if (length(pieces) == 1) {
-    type <- "github"
-    repo <- pieces
-  } else if (length(pieces) == 2) {
-    type <- pieces[1]
-    repo <- pieces[2]
-  } else {
-    stop("Malformed remote specification '", x, "'", call. = FALSE)
-  }
-  fun <- tryCatch(get(paste0(tolower(type), "_remote"),
-                      envir = asNamespace("devtools"), mode = "function", inherits = FALSE),
-                  error = function(e) stop("Unknown remote type: ", type, call. = FALSE))
-  
-  fun(repo)
-}
 
 ##########################################
 # Clone stuff
 ##########################################
 base_path = "/dcl01/smart/data/structural/neuroc/packages"
-stub = "muschellij2/extrantsr"
+stub = "emsweene/SuBLIME_package"
 # stub = "jfortin1/RAVEL"
-gh_url = base_url = "http://github.com/"
-url = paste0(base_url, stub)
+# url = paste0(base_url, stub)
 
-pkg = devtools:::parse_git_repo(stub)
-pkg = pkg$repo
+res = repo_puller(base_path = base_path, stub = stub)
 
+pkg = res$package
+local_path = res$local_path
+repo = res$repo
+  
+pkg = get_pkg_name(stub)
 local_path = file.path(base_path, pkg)
-if (!dir.exists(local_path)) {
-  repo = clone(url, local_path = local_path)
-} else {
-  repo <- init(local_path)
-  # upstream = 
-  res = pull(repo)
-  conf = res@conflicts
-  if (length(conf) > 0) {
-    if (conf) {
-      cmd = paste0(paste0("cd ", local_path, "; "),
-                  "git checkout --theirs DESCRIPTION")
-      system(cmd)
-    }
-  }
-  res = pull(repo)
-  conf = res@conflicts
-  if (length(conf) > 0) {
-    if (conf) {
-      stop("Conflicts are not merged correctly")
-    }
-  }
-}
+
+repo = repo_puller(local_path = local_path,
+                   url = url)
 
 if (!"neuroc" %in% remotes(repo)) {
   neuroc_url = paste0(gh_url, "neuroconductor", "pkg")
