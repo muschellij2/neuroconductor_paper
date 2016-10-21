@@ -1,10 +1,13 @@
 ---
-title: "Neuroconductor: Being Awesome in R"
+title: "Neuroconductor: A Framework for Reproducible Neuroimaging Analysis in R"
 author:
   - name: John Muschelli
     email: jmusche1@jhu.edu
     affiliation: JHU
     footnote: Corresponding Author
+  - name: Jean-Philippe Fortin
+    email: fortin946@gmail.com
+    affiliation: Penn    
   - name: Adrian Gherman
     email: adig@jhu.edu
     affiliation: JHU
@@ -17,9 +20,11 @@ author:
 address:
   - code: JHU
     address: Johns Hopkins Bloomberg School of Public Health, Department of Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205
+  - code: Penn
+    address: Perelman School of Medicine, University of Pennsylvania, Department of Biostatistics and Epidemiology, 423 Guardian Drive, Philadelphia, PA 19104
 abstract: |
-    The Neuroconductive project is an initiative for the collaborative creation of extensible software for computational imaging analysis, with a focus on neuroimaging. The goals of the project include: integrate fast and collaborative development of tested software, increasing reproducibility in analyses of imaging data, and promoting the achievement of remote reproducibility of research results. We describe details of our goals, identify the current implementation and current challenges, and provide examples of existing software and how they would integrate into the Neuroconductor system.
-bibliography: mybibfile.bib
+    The Neuroconductor project is an initiative for the collaborative creation of extensible software for computational imaging analysis, with a focus on neuroimaging. The goals of the project include: integrate fast and collaborative development of tested software, increasing reproducibility in analyses of imaging data, and promoting the achievement of remote reproducibility of research results. We describe details of our goals, identify the current implementation and current challenges, and provide examples of existing software and how they would integrate into the Neuroconductor system.
+bibliography: neuroconductor.bib
 output: rticles::elsevier_article
 ---
 
@@ -30,10 +35,10 @@ Neuroimaging research has been increasing in popularity.  There are X
 number of studies in fMRI and XX in other structural imaging.  Both
 NeuroImage and Human Brain Mapping journals, two key journals for
 neuroimaging methodology and analysis, are dominated by analyses that
-used (typically *nix) commandline software, such as FSL or AFNI or
+used (typically *nix) command-line software, such as FSL or AFNI or
 custom C, C++ or python software, ran in Matlab via SPM or custom
 Matlab scripts, or used pipelining software, such as NiPype or
-LONI. The heterogeneous nature of neuroimaging software has led to a
+LONI [@carp_secret_2012]. The heterogeneous nature of neuroimaging software has led to a
 difficult circumstance for reproducing analyses across and often
 hinders entrance into the community. Efforts such as NiPype, SPM and
 related tools, have made great strides, since python and Matlab are
@@ -47,15 +52,15 @@ with the introduction of Jupyter IPython notebooks.
 The R scripting language has much to offer as a potential environment
 for neuroimaging data analysis *CITE ANI'S ARTICLE AND THE NEUROIMAGE
 ARTICLES ABOUT R*. Like python, R is open source, free and robustly
-implemented across every major computing environment and OS. It also
+implemented across every major computing environment and OS.  With the growth of complex neuroimaging data, sophisticated statistical methods and machine learning methods are necessary, which R can offer.  It also
 has a very large and growing user base *NUMBERS* as well a highly
 developed and motivated open source developer base, creating an
-enormous collection of statistics and machine learning packages.
+enormous collection of statistics and machine learning packages.  The Comprehensive R Archive Network (CRAN) has over 9,000 packages on CRAN and Bioconductor has 1295 software packages.
 Recent advances in R have made multi-threading, GPU processing and
-parallel processing trivial. Moreover, with knitr, R has one of the
+parallel processing trivial. Moreover, with the introduction of the knitr package and RMarkdown format, R has one of the
 most robust tools for reproducible research. In addition, interactive
-web app development is now possible (and easy) with shiny. Finally,
-the RStudio environment gives a powerful and popular IDE for R.
+web application development is now possible (and easy) with Shiny. Finally,
+the RStudio environment gives a powerful and popular IDE for R. (http://r4stats.com/articles/popularity/)
 
 R has a strong package authoring and management system, which has a
 large system of checks to ensure inter-operability inspiring. The

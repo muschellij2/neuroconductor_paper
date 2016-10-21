@@ -55,7 +55,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
-            pdftitle={Neuroconductor: Being Awesome in R},
+            pdftitle={Neuroconductor: A Framework for Reproducible Neuroimaging Analysis in R},
             colorlinks=true,
             urlcolor=blue,
             linkcolor=magenta,
@@ -75,10 +75,13 @@
 \begin{document}
 \begin{frontmatter}
 
-  \title{Neuroconductor: Being Awesome in R}
+  \title{Neuroconductor: A Framework for Reproducible Neuroimaging Analysis in R}
     \author[JHU]{John Muschelli\corref{c1}}
    \ead{jmusche1@jhu.edu} 
    \cortext[c1]{Corresponding Author}
+    \author[Penn]{Jean-Philippe Fortin}
+   \ead{fortin946@gmail.com} 
+  
     \author[JHU]{Adrian Gherman}
    \ead{adig@jhu.edu} 
   
@@ -90,9 +93,12 @@
   
       \address[JHU]{Johns Hopkins Bloomberg School of Public Health, Department of
 Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205}
+    \address[Penn]{Perelman School of Medicine, University of Pennsylvania, Department of
+Biostatistics and Epidemiology, 423 Guardian Drive, Philadelphia, PA
+19104}
   
   \begin{abstract}
-  The Neuroconductive project is an initiative for the collaborative
+  The Neuroconductor project is an initiative for the collaborative
   creation of extensible software for computational imaging analysis, with
   a focus on neuroimaging. The goals of the project include: integrate
   fast and collaborative development of tested software, increasing
@@ -111,30 +117,35 @@ Neuroimaging research has been increasing in popularity. There are X
 number of studies in fMRI and XX in other structural imaging. Both
 NeuroImage and Human Brain Mapping journals, two key journals for
 neuroimaging methodology and analysis, are dominated by analyses that
-used (typically *nix) commandline software, such as FSL or AFNI or
+used (typically *nix) command-line software, such as FSL or AFNI or
 custom C, C++ or python software, ran in Matlab via SPM or custom Matlab
-scripts, or used pipelining software, such as NiPype or LONI. The
-heterogeneous nature of neuroimaging software has led to a difficult
-circumstance for reproducing analyses across and often hinders entrance
-into the community. Efforts such as NiPype, SPM and related tools, have
-made great strides, since python and Matlab are such popular scripting
-languages for analysis, and have robust implementations across all
-popular opperating systems and environments. Creating reproducible
+scripts, or used pipelining software, such as NiPype or LONI (Carp
+2012). The heterogeneous nature of neuroimaging software has led to a
+difficult circumstance for reproducing analyses across and often hinders
+entrance into the community. Efforts such as NiPype, SPM and related
+tools, have made great strides, since python and Matlab are such popular
+scripting languages for analysis, and have robust implementations across
+all popular opperating systems and environments. Creating reproducible
 python analyses and processing has notably improved, in particular, with
 the introduction of Jupyter IPython notebooks.
 
 The R scripting language has much to offer as a potential environment
 for neuroimaging data analysis \emph{CITE ANI'S ARTICLE AND THE
 NEUROIMAGE ARTICLES ABOUT R}. Like python, R is open source, free and
-robustly implemented across every major computing environment and OS. It
-also has a very large and growing user base \emph{NUMBERS} as well a
+robustly implemented across every major computing environment and OS.
+With the growth of complex neuroimaging data, sophisticated statistical
+methods and machine learning methods are necessary, which R can offer.
+It also has a very large and growing user base \emph{NUMBERS} as well a
 highly developed and motivated open source developer base, creating an
-enormous collection of statistics and machine learning packages. Recent
-advances in R have made multi-threading, GPU processing and parallel
-processing trivial. Moreover, with knitr, R has one of the most robust
-tools for reproducible research. In addition, interactive web app
-development is now possible (and easy) with shiny. Finally, the RStudio
-environment gives a powerful and popular IDE for R.
+enormous collection of statistics and machine learning packages. The
+Comprehensive R Archive Network (CRAN) has over 9,000 packages on CRAN
+and Bioconductor has 1295 software packages. Recent advances in R have
+made multi-threading, GPU processing and parallel processing trivial.
+Moreover, with the introduction of the knitr package and RMarkdown
+format, R has one of the most robust tools for reproducible research. In
+addition, interactive web application development is now possible (and
+easy) with Shiny. Finally, the RStudio environment gives a powerful and
+popular IDE for R. (http://r4stats.com/articles/popularity/)
 
 R has a strong package authoring and management system, which has a
 large system of checks to ensure inter-operability inspiring. The
@@ -287,6 +298,11 @@ software and examples on.
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
+\hypertarget{ref-carpux5fsecretux5f2012}{}
+Carp, Joshua. 2012. ``The Secret Lives of Experiments: Methods Reporting
+in the fMRI Literature.'' \emph{NeuroImage} 63 (1): 289--300.
+doi:\href{https://doi.org/10.1016/j.neuroimage.2012.07.004}{10.1016/j.neuroimage.2012.07.004}.
+
 \hypertarget{ref-gentleman2004bioconductor}{}
 Gentleman, Robert C, Vincent J Carey, Douglas M Bates, Ben Bolstad,
 Marcel Dettling, Sandrine Dudoit, Byron Ellis, et al. 2004.
