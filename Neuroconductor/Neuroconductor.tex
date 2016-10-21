@@ -55,7 +55,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
-            pdftitle={Segmentation of Gadolinium-Enhancing Lesions},
+            pdftitle={Neuroconductor: Being Awesome in R},
             colorlinks=true,
             urlcolor=blue,
             linkcolor=magenta,
@@ -75,7 +75,7 @@
 \begin{document}
 \begin{frontmatter}
 
-  \title{Segmentation of Gadolinium-Enhancing Lesions}
+  \title{Neuroconductor: Being Awesome in R}
     \author[JHU]{John Muschelli\corref{c1}}
    \ead{jmusche1@jhu.edu} 
    \cortext[c1]{Corresponding Author}
@@ -108,35 +108,84 @@ Biostatistics, 615 N Wolfe St, Baltimore, MD, 21205}
 \section{Introduction}\label{introduction}
 
 Neuroimaging research has been increasing in popularity. There are X
-number of studies in fMRI and XX in other structural imaging. The
-NeuroImage journal, one of the most prestigious (not right word)
-journals for neuroimaging is dominated by analyses that were in bash
-using third party software, NiPype, or MATLAB. Python reproducibility
-has increased with the introduction of Jupyter IPython notebooks. Muhc
-of this development has mirrored the tools in R, which have some of the
-most state-of-the-art reproducibility tools. Also, similar to PYthon, R
-is free and open source.
+number of studies in fMRI and XX in other structural imaging. Both
+NeuroImage and Human Brain Mapping journals, two key journals for
+neuroimaging methodology and analysis, are dominated by analyses that
+used (typically *nix) commandline software, such as FSL or AFNI or
+custom C, C++ or python software, ran in Matlab via SPM or custom Matlab
+scripts, or used pipelining software, such as NiPype or LONI. The
+heterogeneous nature of neuroimaging software has led to a difficult
+circumstance for reproducing analyses across and often hinders entrance
+into the community. Efforts such as NiPype, SPM and related tools, have
+made great strides, since python and Matlab are such popular scripting
+languages for analysis, and have robust implementations across all
+popular opperating systems and environments. Creating reproducible
+python analyses and processing has notably improved, in particular, with
+the introduction of Jupyter IPython notebooks.
 
-\begin{itemize}
+The R scripting language has much to offer as a potential environment
+for neuroimaging data analysis \emph{CITE ANI'S ARTICLE AND THE
+NEUROIMAGE ARTICLES ABOUT R}. Like python, R is open source, free and
+robustly implemented across every major computing environment and OS. It
+also has a very large and growing user base \emph{NUMBERS} as well a
+highly developed and motivated open source developer base, creating an
+enormous collection of statistics and machine learning packages. Recent
+advances in R have made multi-threading, GPU processing and parallel
+processing trivial. Moreover, with knitr, R has one of the most robust
+tools for reproducible research. In addition, interactive web app
+development is now possible (and easy) with shiny. Finally, the RStudio
+environment gives a powerful and popular IDE for R.
+
+R has a strong package authoring and management system, which has a
+large system of checks to ensure inter-operability inspiring. The
+Comprehensive R Archive Network (CRAN) is a primary repository for R
+packages. In addition, domain specific repositories, notably
+Bioconductor, also host a large number of packages. A legion of
+developers, coupled with dedicated repository maintainers and mirrors
+and the amazing growth of packages with over 9,000 package at last count
+on CRAN alone. CRAN maintains ``task views'' to list packages relevant
+for specific domains. The medical imaging task view lists 27 packages
+for medical image analysis.
+
+CRAN has numerous limitations as a community repository for a domain,
+such as medical or neuro imaging. Some of the key shortcomings to be
+addressed include: stricter package requirements in the form of
+documentation and style, version control integration, development
+versions of packages, continuous integration and lower repository
+maintainer requirements / involvement. In computational biology, the
+Bioconductor repository was created to address some of these
+shortcomings. However, since the creation of CRAN and Bioconductor,
+several new developments have occurred to inspire the creation of a
+package repository specific to Neuroimaging. An influential development
+is the overwhelming use of git and github for version control and
+package development. In addition, continuous integration tools, like
+travis.ci allow package building in the cloud.
+
+\subsection{Goals of Neuroconductor}\label{goals-of-neuroconductor}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Neuroimaging work more common
+  Lower the bar to imaging in R
 \item
-  Reproducibility problems
+  Standardization of syntax similar to NiPype
+\end{enumerate}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    R has some of the best reproducible tools
-  \end{itemize}
-\end{itemize}
+\subsubsection{Why R?}\label{why-r}
 
-R is increasing in popularity, with there being over 9,000 package now
-on the Comprehensive R Archive Network (CRAN). R has a strong package
-system, which has a large system of checks to ensure a large amount of
-operability. Although CRAN has a tested and stable system, that has been
-developed over the last 1000 years(?), there are some aspects of the
-CRAN checking system that does not work for neuroimaging packages.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Leverage R resources/plotting/reproducibility/package development
+\item
+  Leverage Bioconductor resources - they have similar problems, years of
+  testing, and code
+\item
+  Bayesian Statistics
+\end{enumerate}
 
 \subsection{Additional Checks}\label{additional-checks}
 
@@ -221,7 +270,7 @@ drat repository is to specify the \texttt{repos} argument in
 
 In 2004, the Bioconductor system enabled the bioinformatics and genomics
 work of R users to be more integrated and systemized (Gentleman et al.
-2004) Gentleman et al. (2004) .
+2004).
 
 \subsection{Data Packages}\label{data-packages}
 
