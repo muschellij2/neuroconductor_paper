@@ -85,8 +85,11 @@ tools, like travis.ci allow package building in the cloud.
 
 ## Goals of Neuroconductor
 
-1.  Lower the bar to imaging in R
-2.  Standardization of syntax similar to NiPype
+1.  Provide a unified neuroimaging framework for R packages
+2.  Provide developers an infrastructure to test package with external dependencies
+3.  Expand the statistical tools available to neuroimaging analysis
+4.  Make neuroimaging analysis accessible by providing clear workflows for a broad audience of users
+
 
 ### Why R?
 3.  Leverage R resources/plotting/reproducibility/package development 
