@@ -75,7 +75,7 @@
 \begin{document}
 \begin{frontmatter}
 
-  \title{NeuroconductoR: An R platform for Neuroimaging}
+  \title{Neuroconductor: An R platform for Neuroimaging}
     \author[JHU]{John Muschelli\corref{c1}}
    \ead{jmusche1@jhu.edu} 
    \cortext[c1]{Corresponding Author}
@@ -98,28 +98,17 @@ Biostatistics and Epidemiology, 423 Guardian Drive, Philadelphia, PA
 19104}
   
   \begin{abstract}
-NeuroconductoR is an open-source platform for rapid testing and dissemination of reproducible computational imaging software. The goals of the project are to: 1) provide a centralized repository of R software dedicated to image analysis; 2) disseminate quickly software updates; 3) educate a large, diverse community of scientists using detailed tutorials and short courses; 4) ensure quality via automatic and manual quality controls; and 5) promote reproducibility of image data analysis. Based on the  programming language R, NeuroconductoR starts with 24(?) interoperable packages that cover multiple areas of imagin including visualization, pre-processing, and post-processing. NeuroconductoR accepts new R package submissions, which are subject to a formal review and continuous automated testing. We provide a description of NeuroconductoR's frontend with emphasis on the experience of the user and contributor as well as backend.   
+Neuroconductor is an open-source platform for rapid testing and dissemination of reproducible computational imaging software. The goals of the project are to: 1) provide a centralized repository of R software dedicated to image analysis; 2) disseminate quickly software updates; 3) educate a large, diverse community of scientists using detailed tutorials and short courses; 4) ensure quality via automatic and manual quality controls; and 5) promote reproducibility of image data analysis. Based on the  programming language R, Neuroconductor starts with 24(?) interoperable packages that cover multiple areas of imaging including visualization, pre-processing, and post-processing. Neuroconductor accepts new R package submissions, which are subject to a formal review and continuous automated testing. We provide a description of Neuroconductor's front-end with emphasis on the experience of the user and contributor as well as backend.   
   \end{abstract}
-  
+ 
  \end{frontmatter}
 
 \section{Introduction}\label{introduction}
 
-Neuroimaging research has been increasing in popularity. There are X
-number of studies in fMRI and XX in other structural imaging. Both
-NeuroImage and Human Brain Mapping journals, two key journals for
-neuroimaging methodology and analysis, are dominated by analyses that
-used (typically *nix) command-line software, such as FSL or AFNI or
-custom C, C++ or python software, ran in Matlab via SPM or custom Matlab
-scripts, or used pipelining software, such as NiPype or LONI (Carp
-2012). The heterogeneous nature of neuroimaging software has led to a
-difficult circumstance for reproducing analyses across and often hinders
-entrance into the community. Efforts such as NiPype, SPM and related
-tools, have made great strides, since python and Matlab are such popular
-scripting languages for analysis, and have robust implementations across
-all popular opperating systems and environments. Creating reproducible
-python analyses and processing has notably improved, in particular, with
-the introduction of Jupyter IPython notebooks.
+Neuroimaging software is heterogeneous, complex, and hard to use in fully reproducible analytic pipelines. These problems have been accentuated by the diversity of new imaging datasets and associated scientific problems. Indeed, many studies now collect data on thousands of subjects, at multiple visits, using different modalities. Storing, understanding, and analyzing such data is a daunting task. Doing that reproducibly and transparently is the primary goal of Neuroconductor.
+ 
+Efforts such as NiPype, SPM and related tools, have made great strides, since python and Matlab are such popular scripting languages for analysis, and have robust implementations across
+all popular operating systems and environments. Creating reproducible python analyses and processing has notably improved, in particular, with the introduction of Jupyter IPython notebooks.
 
 The R scripting language has much to offer as a potential environment
 for neuroimaging data analysis \emph{CITE ANI'S ARTICLE AND THE
