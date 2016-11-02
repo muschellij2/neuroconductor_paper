@@ -91,7 +91,7 @@ Biostatistics and Epidemiology, 423 Guardian Drive, Philadelphia, PA
 19104}
   
   \begin{abstract}
-Neuroconductor is an open-source platform for rapid testing and dissemination of reproducible computational imaging software. The goals of the project are to: 1) provide a centralized repository of R software dedicated to image analysis; 2) disseminate quickly software updates; 3) educate a large, diverse community of scientists using detailed tutorials and short courses; 4) ensure quality via automatic and manual quality controls; and 5) promote reproducibility of image data analysis. Based on the  programming language R, Neuroconductor starts with \fixme{24} inter-operable packages that cover multiple areas of imaging including visualization, preprocessing, and post-processing. Neuroconductor accepts new R package submissions, which are subject to a formal review and continuous automated testing. We provide a description of Neuroconductor's front-end with emphasis on the experience of the user and contributor as well as backend.   
+Neuroconductor is an open-source platform for rapid testing and dissemination of reproducible computational imaging software. The goals of the project are to: 1) provide a centralized repository of R software dedicated to image analysis; 2) disseminate quickly software updates; 3) educate a large, diverse community of scientists using detailed tutorials and short courses; 4) ensure quality via automatic and manual quality controls; and 5) promote reproducibility of image data analysis. Based on the  programming language R, Neuroconductor starts with \fixme{24} inter-operable packages that cover multiple areas of imaging including visualization, preprocessing, and post-processing. Neuroconductor accepts new R package submissions, which are subject to a formal review and continuous automated testing. We provide a description of Neuroconductor's front-end with emphasis on the experience of the user and contributor as well as backend. \url{http://neuroconductor.org/}  
   \end{abstract}
  
  \end{frontmatter}
@@ -101,10 +101,10 @@ Neuroconductor is an open-source platform for rapid testing and dissemination of
 
 Neuroimaging software is heterogeneous, complex, and hard to use in fully reproducible analytic pipelines. These problems have been accentuated by the diversity of new imaging datasets and associated scientific problems. Indeed, many studies now collect data on thousands of subjects, at multiple visits, using different modalities. Storing, understanding, and analyzing such data is a daunting task. Doing that in a reproducible fashion and transparently is the primary goal of Neuroconductor.
  
-Efforts such as NiPype, SPM and related tools, have made great strides, since python and Matlab are such popular scripting languages for analysis, and have robust implementations across
+Efforts such as NiPype \citep{gorgolewski2011nipype}, SPM \citep{spm} and related tools, have made great strides, since python and Matlab are such popular scripting languages for analysis, and have robust implementations across
 all popular operating systems and environments. Creating reproducible python analyses and processing has notably improved, in particular, with the introduction of Jupyter IPython notebooks.
 
-The R scripting language has much to offer as a potential environment
+The R scripting language \citep{r} has much to offer as a potential environment
 for neuroimaging data analysis \fixme{cite Ani's article and the neuroimage articles about R THE}. Like python, R is open source, free and
 robustly implemented across every major computing environment and OS.
 With the growth of complex neuroimaging data, sophisticated statistical
@@ -112,14 +112,12 @@ methods and machine learning methods are necessary, which R can offer.
 It also has a very large and growing user base \fixme{NUMBERS} as well a
 highly developed and motivated open source developer base, creating an
 enormous collection of statistics and machine learning packages. The
-Comprehensive R Archive Network (CRAN) has over 9,000 packages on CRAN
-and Bioconductor has 1295 software packages. Recent advances in R have
+Comprehensive R Archive Network (CRAN) has over 9,000 packages, and the Bioconductor project \citep{bioc1,bioc2} has over 1,200 software packages. Recent advances in R have
 made multi-threading, GPU processing and parallel processing trivial.
 Moreover, with the introduction of the knitr package and RMarkdown
 format, R has one of the most robust tools for reproducible research. In
 addition, interactive web application development is now possible (and
-easy) with Shiny. Finally, the RStudio environment gives a powerful and
-popular IDE for R. (http://r4stats.com/articles/popularity/)
+easy) with Shiny \fixme{XX}. Finally, the RStudio environment gives a powerful and popular IDE for R. (http://r4stats.com/articles/popularity/)
 
 R has a strong package authoring and management system, which has a
 large system of checks to ensure inter-operability inspiring. The
@@ -146,19 +144,76 @@ is the overwhelming use of git and github for version control and
 package development. In addition, continuous integration tools, like
 travis.ci allow package building in the cloud.
 
-\section{Description or table of current packages}
+\section{Neuroconductor infrastructure}
+
+\section{Description (table?) of current packages}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table 
+\begin{table}[!ht]
+%\scriptsize
+\centering
+\caption{\textbf{Current R packages available on Neuroconductor}}\label{tab:packages}
+\begin{tabular}{lll}
+\hline \\[-2ex]
+\textbf{Package} & \textbf{Description}   & \textbf{References} \\
+\hline \\ [-1.5ex]
+\texttt{neurobase} & Base functions for Neuroconductor  &   \\
+\texttt{oro.nifti} & Description  &  \citep{oro} \\
+\texttt{oro.dicom} & Description  &  \citep{oro} \\
+\texttt{oro.asl} & Description  &   \\
+\texttt{oro.pet} & Description  &   \\
+\texttt{ANTsR} & Advanced Normalization Tools  & \citep{ants} \\
+\texttt{extrantsr} & Extensions for ANTsR  &  \\
+\texttt{fslr} & R package for FSL  & \citep{fslr,fsl} \\
+\texttt{freesurfer} & R package for FreeSurfer  & \citep{freesurfer} \\
+\texttt{oasis} & OASIS lesion segmentation & \citep{oasis}\\
+\texttt{WhiteStripe} & White Stripe intensity normalization  & \citep{whitestripe} \\
+\texttt{RAVEL} & Statistical analysis of structural MRIs  & \citep{ravel} \\
+\texttt{hcp} & R interface for the Human Connectome Project database &  \\
+\hline \\ [-1.5ex]
+\multicolumn{3}{l}{\textbf{Data packages}}\\
+\\ [-1.5ex]
+\texttt{kirby21.t1} &   & \citep{kirby}  \\
+\texttt{kirby21.t2} &   &  \citep{kirby} \\
+\texttt{kirby21.flair} &   &  \citep{kirby} \\
+\texttt{kirby21.dti} &   &  \citep{kirby} \\
+\texttt{kirby21.fmri} &   &  \citep{kirby} \\
+\texttt{kirby21.mt} &   &  \citep{kirby} \\
+\texttt{kirby21.vaso} &   &  \citep{kirby} \\
+\texttt{kirby21.asl} &   &  \citep{kirby} \\
+\hline \\ [-1.5ex]
+\multicolumn{3}{l}{\textbf{Template packages}}\\
+\\ [-1.5ex]
+\texttt{MNITemplate} &   &   \\
+\texttt{EveTemplate} &   & \citep{eve}  \\
+\end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 \section{Example of a cross-package Neuroconductor workflow: preprocessing of structural MRIs}
 
+Allo John Muschelli. Maybe a nice chart walking us through different the different preprocessing steps?
+
 \section{Case study of a statistical analysis}
 
+Gender differences in FA and MD maps in the HCP. 436 females, 345 males. 
+
+Via the \texttt{hcp} package, an R interface for downloading open-access data from the Human Connectome Project \citep{hcp}, we downloaded the minimally preprocessed diffusion tensor imaging (DT) data \citep{hcpminimal} for 781 subjects, along with the structural T1-w images. To create the diffusion tensors, fractional anisotropy (FA) and mean diffusivity (MD) maps, we used the R package \texttt{rcamino}, an R interface for the open-source DTI software Camino \citep{camino}. We then registered the FA and MD maps to the 1mm Eve template \citep{eve} using the diffeomorphic non-linear registration implemented in \texttt{ANTsR}. We note that the Eve template files are available in the \texttt{EveTemplate} package. Each registered FA and MD map was saved to disk as a NIfTI file, ready for postprocessing analysis. 
+
+The function \texttt{nifti2matrix}, implemented in the package \texttt{neurobase}, allows users to create a matrix of image intensities (rows are voxels, columns are subjects) from a list of NIfTI files that have been registered to a common template space. The matrix of intensities serves as the starting point for the statistical downstream analysis. 
+  
+
 \begin{enumerate}
-\item Reading data with package \texttt{hcp}: diffusion + T1-w
-\item Creating diffusion tensor images with \texttt{rcamino} 
-\item Nonlinear registration of the FA and MD maps to a template
-\item Creation of a matrix with the \texttt{nifti2matrix} function
-\item Visualization of the Fa and MD maps
-\item Voxel-wise t-statistics, glm, gee, etc .. 
+\item Voxel-wise t-statistics, glm, gee, etc. 
+\item Visualization of the results. 
 \end{enumerate}
 
 
@@ -204,26 +259,17 @@ travis.ci allow package building in the cloud.
 
 \subsubsection{Third Party Software}\label{third-party-software}
 
-\begin{itemize}
-\tightlist
-\item
-  FSL
-\item
-  AFNI
-\item
-  FREESURFER
-\item
-  SPM
-\end{itemize}
+FSL \citep{fsl}, AFNI \citep{afni}, FreeSurfer \citep{freesurfer}, SPM \citep{spm}
+
 
 We will refer to R-Forge, OmegaHat, and CRAN as standard
 repositories.
 
 \subsection{Devtools}\label{devtools}
 
-In YEAR, Hadley and RStudio had published the \texttt{devtools} package.
+In \fixme{YEAR}, Hadley and RStudio had published the \texttt{devtools} package.
 The \texttt{devtools} package provided the tools to install R packages
-from a multitude of sources. The Neuroconductor relies on the
+from a multitude of sources. Neuroconductor relies on the
 installation script for R packages on GitHub. Moreover, it allowed for
 the introduction of a flag in the installation of an R package (the
 \texttt{Remotes:} field) that allowed users specify a dependency for the
@@ -235,7 +281,7 @@ install that dependency before installing the package in question.
 In addition to installing packages from GitHub, there are additional
 options to the installer scripts, which allow users to install specific
 snapshots of these packages. These snapshots can be based on GitHub
-commit identifiers (IDs), tags, or referrences.
+commit identifiers (IDs), tags, or references.
 
 The \texttt{remotes} package provides a lightweight version of the
 \texttt{devtools} package for installing from non-standard and standard
@@ -282,7 +328,7 @@ drat repository is to specify the \texttt{repos} argument in
 \subsection{Bioconductor}
 
 In 2004, the Bioconductor system enabled the bioinformatics and genomics
-work of R users to be more integrated and systemized\citep{gentleman2004bioconductor,huber2015orchestrating}.
+work of R users to be more integrated and systemized\citep{bioc1,bioc2}.
 
 \subsection{Data Packages}\label{data-packages}
 
