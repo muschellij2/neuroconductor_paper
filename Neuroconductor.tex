@@ -5,18 +5,11 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-\bibliographystyle{elsarticle-harv}
-\biboptions{sort&compress} % For natbib
+%\bibliographystyle{elsarticle-harv}
+%\biboptions{sort&compress} % For natbib
 \usepackage{graphicx}
-\usepackage{booktabs} % book-quality tables
-%% Redefines the elsarticle footer
-%\makeatletter
-%\def\ps@pprintTitle{%
-% \let\@oddhead\@empty
-% \let\@evenhead\@empty
-% \def\@oddfoot{\it \hfill\today}%
-% \let\@evenfoot\@oddfoot}
-%\makeatother
+\usepackage{booktabs} 
+
 
 % A modified page layout
 \textwidth 6.75in
@@ -223,7 +216,7 @@ travis.ci allow package building in the cloud.
   SPM
 \end{itemize}
 
-We will refer to R-Forge, OmegaHat, Bioconductor, and CRAN as standard
+We will refer to R-Forge, OmegaHat, and CRAN as standard
 repositories.
 
 \subsection{Devtools}\label{devtools}
@@ -289,28 +282,30 @@ drat repository is to specify the \texttt{repos} argument in
 \subsection{Bioconductor}
 
 In 2004, the Bioconductor system enabled the bioinformatics and genomics
-work of R users to be more integrated and systemized (Gentleman et al.
-2004).
+work of R users to be more integrated and systemized\citep{gentleman2004bioconductor,huber2015orchestrating}.
 
 \subsection{Data Packages}\label{data-packages}
 
 Like Bioconductor, we need data packages that allow users to test
 software and examples on.
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
+\bibliographystyle{plainnat}
+\bibliography{Neuroconductor}
 
-\hypertarget{refs}{}
-\hypertarget{ref-carpux5fsecretux5f2012}{}
-Carp, Joshua. 2012. ``The Secret Lives of Experiments: Methods Reporting
-in the fMRI Literature.'' \emph{NeuroImage} 63 (1): 289--300.
-doi:\href{https://doi.org/10.1016/j.neuroimage.2012.07.004}{10.1016/j.neuroimage.2012.07.004}.
-
-\hypertarget{ref-gentleman2004bioconductor}{}
-Gentleman, Robert C, Vincent J Carey, Douglas M Bates, Ben Bolstad,
-Marcel Dettling, Sandrine Dudoit, Byron Ellis, et al. 2004.
-``Bioconductor: Open Software Development for Computational Biology and
-Bioinformatics.'' \emph{Genome Biology} 5 (10). BioMed Central: 1.
+%\section*{References}\label{references}
+%\addcontentsline{toc}{section}{References}
+%
+%\hypertarget{refs}{}
+%\hypertarget{ref-carpux5fsecretux5f2012}{}
+%Carp, Joshua. 2012. ``The Secret Lives of Experiments: Methods Reporting
+%in the fMRI Literature.'' \emph{NeuroImage} 63 (1): 289--300.
+%doi:\href{https://doi.org/10.1016/j.neuroimage.2012.07.004}{10.1016/j.neuroimage.2012.07.004}.
+%
+%\hypertarget{ref-gentleman2004bioconductor}{}
+%Gentleman, Robert C, Vincent J Carey, Douglas M Bates, Ben Bolstad,
+%Marcel Dettling, Sandrine Dudoit, Byron Ellis, et al. 2004.
+%``Bioconductor: Open Software Development for Computational Biology and
+%Bioinformatics.'' \emph{Genome Biology} 5 (10). BioMed Central: 1.
 
 \end{document}
 
