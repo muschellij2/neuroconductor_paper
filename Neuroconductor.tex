@@ -98,25 +98,25 @@ Biostatistics and Epidemiology, 423 Guardian Drive, Philadelphia, PA
 19104}
   
   \begin{abstract}
-Neuroconductor is an open-source platform for rapid testing and dissemination of reproducible computational imaging software. The goals of the project are to: 1) provide a centralized repository of R software dedicated to image analysis; 2) disseminate quickly software updates; 3) educate a large, diverse community of scientists using detailed tutorials and short courses; 4) ensure quality via automatic and manual quality controls; and 5) promote reproducibility of image data analysis. Based on the  programming language R, Neuroconductor starts with 24(?) interoperable packages that cover multiple areas of imaging including visualization, pre-processing, and post-processing. Neuroconductor accepts new R package submissions, which are subject to a formal review and continuous automated testing. We provide a description of Neuroconductor's front-end with emphasis on the experience of the user and contributor as well as backend.   
+Neuroconductor is an open-source platform for rapid testing and dissemination of reproducible computational imaging software. The goals of the project are to: 1) provide a centralized repository of R software dedicated to image analysis; 2) disseminate quickly software updates; 3) educate a large, diverse community of scientists using detailed tutorials and short courses; 4) ensure quality via automatic and manual quality controls; and 5) promote reproducibility of image data analysis. Based on the  programming language R, Neuroconductor starts with \fixme{24} inter-operable packages that cover multiple areas of imaging including visualization, preprocessing, and post-processing. Neuroconductor accepts new R package submissions, which are subject to a formal review and continuous automated testing. We provide a description of Neuroconductor's front-end with emphasis on the experience of the user and contributor as well as backend.   
   \end{abstract}
  
  \end{frontmatter}
 
+% Introduction
 \section{Introduction}\label{introduction}
 
-Neuroimaging software is heterogeneous, complex, and hard to use in fully reproducible analytic pipelines. These problems have been accentuated by the diversity of new imaging datasets and associated scientific problems. Indeed, many studies now collect data on thousands of subjects, at multiple visits, using different modalities. Storing, understanding, and analyzing such data is a daunting task. Doing that reproducibly and transparently is the primary goal of Neuroconductor.
+Neuroimaging software is heterogeneous, complex, and hard to use in fully reproducible analytic pipelines. These problems have been accentuated by the diversity of new imaging datasets and associated scientific problems. Indeed, many studies now collect data on thousands of subjects, at multiple visits, using different modalities. Storing, understanding, and analyzing such data is a daunting task. Doing that in a reproducible fashion and transparently is the primary goal of Neuroconductor.
  
 Efforts such as NiPype, SPM and related tools, have made great strides, since python and Matlab are such popular scripting languages for analysis, and have robust implementations across
 all popular operating systems and environments. Creating reproducible python analyses and processing has notably improved, in particular, with the introduction of Jupyter IPython notebooks.
 
 The R scripting language has much to offer as a potential environment
-for neuroimaging data analysis \emph{CITE ANI'S ARTICLE AND THE
-NEUROIMAGE ARTICLES ABOUT R}. Like python, R is open source, free and
+for neuroimaging data analysis \fixme{cite Ani's article and the neuroimage articles about R THE}. Like python, R is open source, free and
 robustly implemented across every major computing environment and OS.
 With the growth of complex neuroimaging data, sophisticated statistical
 methods and machine learning methods are necessary, which R can offer.
-It also has a very large and growing user base \emph{NUMBERS} as well a
+It also has a very large and growing user base \fixme{NUMBERS} as well a
 highly developed and motivated open source developer base, creating an
 enormous collection of statistics and machine learning packages. The
 Comprehensive R Archive Network (CRAN) has over 9,000 packages on CRAN
@@ -136,11 +136,11 @@ Bioconductor, also host a large number of packages. A legion of
 developers, coupled with dedicated repository maintainers and mirrors
 and the amazing growth of packages with over 9,000 package at last count
 on CRAN alone. CRAN maintains ``task views'' to list packages relevant
-for specific domains. The medical imaging task view lists 27 packages
+for specific domains. The medical imaging task view lists \fixme{27} packages
 for medical image analysis.
 
 CRAN has numerous limitations as a community repository for a domain,
-such as medical or neuro imaging. Some of the key shortcomings to be
+such as medical or neuroimaging. Some of the key shortcomings to be
 addressed include: stricter package requirements in the form of
 documentation and style, version control integration, development
 versions of packages, continuous integration and lower repository
@@ -152,6 +152,28 @@ package repository specific to Neuroimaging. An influential development
 is the overwhelming use of git and github for version control and
 package development. In addition, continuous integration tools, like
 travis.ci allow package building in the cloud.
+
+\section{Description or table of current packages}
+
+\section{Example of a cross-package Neuroconductor workflow: preprocessing of structural MRIs}
+
+\section{Case study of a statistical analysis}
+
+\begin{enumerate}
+\item Reading data with package \texttt{hcp}: diffusion + T1-w
+\item Creating diffusion tensor images with \texttt{rcamino} 
+\item Nonlinear registration of the FA and MD maps to a template
+\item Creation of a matrix with the \texttt{nifti2matrix} function
+\item Visualization of the Fa and MD maps
+\item Voxel-wise t-statistics, glm, gee, etc .. 
+\end{enumerate}
+
+
+
+\section{Visualization}
+
+
+\section{Notes / Other stuff}
 
 \subsection{Goals of Neuroconductor}\label{goals-of-neuroconductor}
 
@@ -264,7 +286,7 @@ drat repository is to specify the \texttt{repos} argument in
 \texttt{install.packages}:
 \texttt{install.packages("package\_name",\ repos="http://path/to/drat/repo")}.
 
-\section{Bioconductor}\label{bioconductor}
+\subsection{Bioconductor}
 
 In 2004, the Bioconductor system enabled the bioinformatics and genomics
 work of R users to be more integrated and systemized (Gentleman et al.
