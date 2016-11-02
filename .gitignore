@@ -4,3 +4,6 @@
 .Ruserdata
 
 Neuroconductor/Neuroconductor_cache/*
+
+Neuroconductor.Rproj
+*.tex.bak
