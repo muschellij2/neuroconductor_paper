@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\begin{document}
+\pagestyle{empty}
+% Define block styles
+
+\tikzstyle{bblock} = [rectangle, draw, text width=8em, text centered, minimum height=2em, rounded corners]
+\tikzstyle{line} = [draw, text centered , -latex']
+\tikzstyle{line node} = [draw, fill=white, font=\tiny ]
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, minimum height=4em, rounded corners]    
+
+\begin{tikzpicture}[node distance = 2cm, every node/.style={rectangle,fill=white}, scale=1.5, transform shape]
+% Place nodes
+\node [bblock] (raw) {DICOM images};
+\node [bblock, below of=raw] (dcmnii) {NIfTI image};
+\node [bblock, below of=dcmnii] (inhomo) {Inhomogeneity Correction};
+\node [bblock, below of=inhomo] (coreg) {Co-registration};
+\node [bblock, below of=coreg] (bet) {Brain Extraction};
+%\node [bblock, below of=bet, left of=bet] (anal_1) {Analysis};
+\node [bblock, below of=bet, right of=bet] (norm) {Intensity\newline Normalization};
+\node [bblock, below of=norm, left of=norm] (anal) {Analysis};
+%\node [bblock, below of=norm] (anal_2) {Analysis};
+
+
+% Draw edges
+\path [line] (raw) -- node {dcm2niir} (dcmnii);
+\path [line] (dcmnii) -- (inhomo);
+\path [line] (inhomo) -- (coreg);
+\path [line] (coreg) -- (bet);
+%\path [line] (bet) -- (anal_1);
+\path [line] (bet) -- (anal);
+\path [line] (bet) -- (norm);
+\path [line] (norm) -- (anal);
+%\path [line] (norm) -- (anal_2);
+
+\end{tikzpicture}
+\end{document}
