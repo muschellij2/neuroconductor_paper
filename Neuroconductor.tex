@@ -283,7 +283,7 @@ labels <- getEveMapLabels()
 \end{verbatim}
 \color{black}
 
-The following commands produce the three rows of \fixme{Figure XX}, using the \texttt{ortho2} command from the \texttt{neurobase} package:
+The following commands produce the three panels of Figure~\ref{fig:dti}, using the function \texttt{ortho2} from the \texttt{neurobase} package:
 \color{blue}
 \begin{verbatim}
 # Plotting parameters:
@@ -315,11 +315,11 @@ ortho2(map, y=map_roi,
 \end{verbatim}
 \color{black}
 
-% Flow chart John
+% DTI Figure:
 \begin{figure}[!ht]
   \begin{center}
-    \caption{Blabla}
-    \includegraphics[height=6.5in]{Imaging_Pipeline_Flowchart.pdf}
+    \caption{\textbf{Visualization of the diffusion tensor imaging (DTI) analysis results. } (a) Visualization of the anatomical structures in template space (Eve template, 1-mm isotropic T1-weighted modality) in coronal, sagittal and axial planes (coordinates x=77, y=114 and z=84). (b) T-statistics characterizing the differences between males and females in the mean diffusivity (MD) values from the Human Connectome Project (HCP) dataset, in template space. Blue and red regions represent higher and lower values of MD in males, respectively. (c) Visualization of the Eve atlas white matter parcellation map (WMPM). } 
+    \includegraphics[height=5.5in]{figure_dti.pdf}
     \label{fig:dti}
   \end{center}
 \end{figure}
