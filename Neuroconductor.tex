@@ -134,7 +134,8 @@ A major advantage of the R environment is that analyses can take advantage of we
 
 % Case study
 \subsection{Case study: structural magnetic resonance imaging processing.} Figure~\ref{fig:flow} provides an example of a typical processing pipeline for multi-sequence MRI data. Analysis of such data often begins with a conversion of Digital Imaging and Communications in Medicine (DICOM) files, which are essentially JPEG images with header information.  These DICOM files are converted to the Neuroimaging Informatics Technology Initiative (NIfTI) format, one of the most common neuroimaging formats. This process can be done in \verb"R" using the \pkg{dcm2niir} (\url{https://www.nitrc.org/projects/mricrogl/}) or \pkg{oro.dicom} \cite{dicom_nifti} packages. The resulting NIfTI files can be converted to array-based S4 objects  using the \pkg{oro.nifti} \cite{oro.nifti} package or objects based on C++ pointers using the \pkg{ANTsR} \cite{antsr} and \pkg{RNifti} \cite{Rnifti} packages.  These packages also provide the ability to read other neuroimaging formats.
-
+ 
+% Flow chart John
 \begin{figure}[!ht]
   \begin{center}
     \caption{Typical processing pipeline for multi-sequence structural MRI data.}
@@ -227,44 +228,108 @@ md_eve = ants_apply_transforms(fixed = eve_template, moving = md,
     transformlist = reg$fwdtransforms)    
 \end{verbatim}
 \color{black}
+
 The results of these processing steps are $3$D arrays containing the FA and MD maps registered to the Eve atlas for every subject. While at this point we do not conduct region of interest (ROI) analyses, the template would be very useful to extract subject-specific ROIs. An ROI could be defined as an anatomical region, regions obtained from other analyses, or regions that are manually delineated. Here we focus on voxel-wise analysis across subjects, which can be done because images are registered to the same template.
 
 % Step 4: statistical analysis
 \subsubsection{Step 4: Statistical analysis} 
 In general, we consider that principled data analysis is Statistical analysis. However, to keep with Neuroimaging phraseology, here we refer to statistical analysis as the analysis of populations of images.
 
-We first read the registered NIfTI files into R and create a matrix of voxels intensities with voxels as rows, and subjects as columns. We create one matrix for the FA maps, and one for the MD maps, using the  function \texttt{nifti2matrix} from the package \texttt{neurobase}. In this example, each matrix has $1,372,619$ rows (number of voxels in the MNI template) and $781$ columns (number of subjects in the dataset). 
-
-There are many options in R to quantify the association of the FA and MD intensities with gender. The simplest approach is to calculate mass-univariate two-sample t-statistics (t-statistics computed at each voxel separately), which can be quickly computed using \texttt{limma}, a popular R package from the Bioconductor project \url{https://www.bioconductor.org/}. The package was originally developed for the analysis of high-throughput genomic data \citep{ritchie2015limma}, but many of the package functionalities can  be used in neuroimaging applications without any additional effort. The \texttt{limma} package also implements Empirical-Bayes (EB) methods to estimate  t-statistics based on variance shrinkage (called moderated t-statistics), which has been shown to performe well for small sample-size studies \citep{berkeley2004linear,ritchie2015limma}. The Neuroconductor package \texttt{RAVEL} contains the convenience function \texttt{getTMap}, which calculates t-statistics based on the \texttt{limma} package.  The \texttt{R} code is presented below.
+We first read the registered NIfTI files into R and create a matrix of voxels intensities with voxels as rows, and subjects as columns. We create one matrix for the FA maps, and one for the MD maps, using the  function \texttt{images2matrix} from the package \texttt{neurobase}. In this example, each matrix has $1,372,619$ rows (number of GM and WM voxels in the Eve template) and $781$ columns (number of subjects in the dataset). For brevity, we present only the analysis for the MD maps. 
 
 \color{blue}
 \begin{verbatim}
-JP provides code here
-# nifti2matrix
+# Create the GM and WM mask in Eve template space:
+mask <- readEveSeg()
+mask[mask ==1] <- 0 # Discarding voxels in the CSF
+mask[mask %in% c(2,3)] <- 1
+
+# Create the matrix for MD values:
+Y.md <- images2matrix(files.md, mask=mask)
+\end{verbatim}
+\color{black}
+
+
+There are many options in R to quantify the association of the FA and MD intensities with gender. The simplest approach is to calculate mass-univariate two-sample t-statistics (t-statistics computed at each voxel separately), which can be quickly computed using \texttt{limma} \citep{limma1,limma2, limma3}, a popular R package from the Bioconductor project \url{https://www.bioconductor.org/}. The package was originally developed for the analysis of high-throughput genomic data, but many of the package functionalities can  be used in neuroimaging applications without any additional effort. Among others, the \texttt{limma} package implements Empirical-Bayes (EB) methods to estimate t-statistics based on variance shrinkage (called moderated t-statistics), to improve inference for in small sample size studies. Below, we present the code to compute the t-statistics for the association between gender and MD, adjusting for age: 
+
+\color{blue}
+\begin{verbatim}
+# Fit the EB linear model with limma:
+library(limma)
+fit.md <- eBayes(lmFit(Y.md, model.matrix(~gender+age)))
+
+# Get moderated t-statistics for gender:
+t.md    <- fit.md$t[,2]
+
+# Map back the t-statistics into native space:
+img.t.md <- remake_img(t.md, img=mask, mask=mask)
 \end{verbatim}
 \color{black}
 
 % Step 5: Visualization of the results
 \subsubsection{Step 5: Visualization of the results}
+
+A considerable advantage  of the close integration between pre- and post-processing tools is that results can easily be mapped back into the native space or into template space. In particular, this can help localize significant associations using the available label templates. For example, in our analysis of differences in DTI measures between males and females in WM and GM, we can identify the voxels that exhibit the largest differences using the white matter parcellation map (WMPM) \citep{eve} included in the Eve Template.  Below, we provide the \texttt{R} code for visualization and localization of these results.
+
 \color{blue}
 \begin{verbatim}
-JP provides code and images here
-# 
+# Read the Eve Template, brain only:
+library(EveTemplate)
+template <- readEveTemplate("Brain")
+
+# Read the Eve WMPM:
+map <- readEveMap()
+labels <- getEveMapLabels()
 \end{verbatim}
 \color{black}
+
+The following commands produce the three rows of \fixme{Figure XX}, using the \texttt{ortho2} command from the \texttt{neurobase} package:
+\color{blue}
+\begin{verbatim}
+# Plotting parameters:
+bound <- max(abs(t.md))
+xyz <- c(77,114,84)
+mfrow <- c(1,3)
+myColors <- rev(colorRampPalette(c("blue", "grey95", "red"))(255))
+ybreaks  <- seq(-bound, bound, length.out=length(myColors)+1)
+colors <- c("orange", "yellow", "red", "firebrick", "blue", "deepskyblue3")
+
+# Read the Eve WMPM:
+map <- readEveMap()
+labels <- getEveMapLabels()
+
+# Plot the Eve template space:
+ortho2(template, mfrow = mfrow, xyz = xyz)
+
+# Plot the t-statistics for MD maps:
+ortho2(template, y=brain.md, 
+    mfrow=mfrow, xyz=xyz, 
+    col.y = myColors, ybreaks=ybreaks, ycolorbar=TRUE
+)
+
+# Plot selected regions:
+ortho2(map, y=map_roi, 
+    mfrow=mfrow, xyz=xyz, 
+    col.y=colors
+)
+\end{verbatim}
+\color{black}
+
+% Flow chart John
+\begin{figure}[!ht]
+  \begin{center}
+    \caption{Blabla}
+    \includegraphics[height=6.5in]{Imaging_Pipeline_Flowchart.pdf}
+    \label{fig:dti}
+  \end{center}
+\end{figure}
 
 % Other analyses
 \subsection{Advanced data analysis and visualization}
-An important advantage  of the  \texttt{R} environment  is that  more sophisticated voxel-level analyses  can easily be  implemented.  For  example, one could be interested  whether  there  are  additional confounders  for the association between  FA and gender or  whether  image intensities predict health outcomes. The \texttt{lm} and \texttt{glm} packages in \texttt{R} are designed specifically to address such questions. If images are observed longitudinally or they are used as baseline predictors in longitudinal studies one could use the mixed effects \texttt{gee} \cite{gee} and \texttt{lme4} \cite{lme4} packages. If one is interested in modeling survival time based on baseline images then the \texttt{survival} package \cite{survival-package,survival-book} can be used.
+An important advantage  of the  \texttt{R} environment  is that  more sophisticated voxel-level analyses can be easily implemented.  For  example, one could be interested  whether  there  are  additional confounders  for the association between FA and gender, or  whether  image intensities predict health outcomes. The \texttt{lm} and \texttt{glm} packages in \texttt{R} are designed specifically to address such questions. If images are observed longitudinally or they are used as baseline predictors in longitudinal studies, one could use the mixed effects \texttt{gee} \cite{gee} and \texttt{lme4} \cite{lme4} packages. If one is interested in modeling survival time based on baseline images, then the \texttt{survival} package \citep{survival-package,survival-book} can be used.
 
-Another  advantage  of the close integration between pre- and post-processing tools is that results can easily be mapped back in the native space or on the template. In particular, this can help localize significant associations by using the available label templates. For example, in our analysis of white matter by gender we could identify the voxels where the largest differences between genders are identified.  Below we provide the  \texttt{R} code  for visualization  and  localization of these results
 
-\color{blue}
-\begin{verbatim}
-JP provides code and images here
-# 
-\end{verbatim}
-\color{black}
+
 
 \section{Large multi-site neuroimaging data fusion}\label{sec:datafusion}
 Short section about how R can be used to statistically combine large datasets using the \texttt{sva} package \citep{svapackage} that implements the SVA and ComBat methods \citep{combat}. Talk about RUV and RAVEL \citep{ravel}. 
