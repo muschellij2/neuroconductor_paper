@@ -1,0 +1,265 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{}
+  \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+  \author{}
+  \preauthor{}\postauthor{}
+  \date{}
+  \predate{}\postdate{}
+
+
+\begin{document}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Extract the DTI files for the subject and name them using the NIfTI format}
+\KeywordTok{library}\NormalTok{(neurobase)}
+\KeywordTok{library}\NormalTok{(rcamino)}
+\NormalTok{outfiles <-}\StringTok{ }\NormalTok{result$output_files}
+\KeywordTok{names}\NormalTok{(outfiles) <-}\StringTok{ }\NormalTok{neurobase::}\KeywordTok{nii.stub}\NormalTok{(}\KeywordTok{basename}\NormalTok{(outfiles))}
+
+\CommentTok{# Specify the B-values and B-vectors used in the HCP database for further processing:}
+\KeywordTok{camino_fsl2scheme}\NormalTok{(}\DataTypeTok{bvecs =} \NormalTok{outfiles[[}\StringTok{"bvecs"}\NormalTok{]], }\DataTypeTok{bvals =} \NormalTok{outfiles[[}\StringTok{"bvals"}\NormalTok{]],}
+    \DataTypeTok{outfile =} \StringTok{"hcp.scheme"}\NormalTok{)}
+
+\CommentTok{# Convert the diffusion data from NIfTI to Camino format:}
+\KeywordTok{camino_image2voxel}\NormalTok{(}\DataTypeTok{infile =} \NormalTok{outfiles[[}\StringTok{"data"}\NormalTok{]], }\DataTypeTok{outfile =} \StringTok{"dwi.Bfloat"}\NormalTok{)}
+
+\CommentTok{# Fit the diffusion tensor imaging model:}
+\KeywordTok{camino_modelfit}\NormalTok{(}\DataTypeTok{infile =} \StringTok{"dwi.Bfloat"}\NormalTok{, }\DataTypeTok{outfile =} \StringTok{"dt.Bdouble"}\NormalTok{, }
+    \DataTypeTok{scheme =} \StringTok{"hcp.scheme"}\NormalTok{, }\DataTypeTok{gradadj =} \NormalTok{outfiles[[}\StringTok{"grad_dev"}\NormalTok{]],}
+    \DataTypeTok{model =} \StringTok{"ldt"}\NormalTok{, }\DataTypeTok{mask =} \NormalTok{outfiles[[}\StringTok{"nodif_brain_mask"}\NormalTok{]])}
+
+\CommentTok{# Produce the FA and MD maps from the fitted tensor data:}
+\NormalTok{fa <-}\StringTok{ }\KeywordTok{camino_fa_img}\NormalTok{(}\DataTypeTok{infile =} \StringTok{"dt.Bdouble"}\NormalTok{, }\DataTypeTok{inputmodel =} \StringTok{"dt"}\NormalTok{, }\DataTypeTok{header =} \NormalTok{outfiles[[}\StringTok{"data"}\NormalTok{]])}
+\NormalTok{md <-}\StringTok{ }\KeywordTok{camino_md_img}\NormalTok{(}\DataTypeTok{infile =} \StringTok{"dt.Bdouble"}\NormalTok{, }\DataTypeTok{inputmodel =} \StringTok{"dt"}\NormalTok{, }\DataTypeTok{header =} \NormalTok{outfiles[[}\StringTok{"data"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Specify the path of the Eve template file:}
+\KeywordTok{library}\NormalTok{(EveTemplate)}
+\NormalTok{eve_template =}\StringTok{ }\KeywordTok{getEvePath}\NormalTok{()}
+
+\CommentTok{# Perform non-linear registration usin Syn in ANTsR:}
+\NormalTok{t1_file <-}\StringTok{ }\KeywordTok{download_hcp_file}\NormalTok{(}\StringTok{"HCP/100307/T1w/T1w_acpc_dc_restore_brain.nii.gz"}\NormalTok{)}
+\NormalTok{reg <-}\StringTok{ }\NormalTok{extrantsr::}\KeywordTok{registration}\NormalTok{(}\DataTypeTok{filename =} \NormalTok{t1_file,  }\DataTypeTok{template.file =} \NormalTok{eve_template, }
+    \DataTypeTok{typeofTransform =} \StringTok{"SyN"}\NormalTok{, }\DataTypeTok{interpolator =} \StringTok{"Linear"}\NormalTok{, }\DataTypeTok{remove.warp =} \OtherTok{FALSE}\NormalTok{)}
+
+\CommentTok{# Create the registered FA and MD maps to the Eve atlas:}
+\NormalTok{fa_eve <-}\StringTok{ }\KeywordTok{ants_apply_transforms}\NormalTok{(}\DataTypeTok{fixed =} \NormalTok{eve_template, }\DataTypeTok{moving =} \NormalTok{fa, }
+    \DataTypeTok{transformlist =} \NormalTok{reg$fwdtransforms)}
+\NormalTok{md_eve <-}\StringTok{ }\KeywordTok{ants_apply_transforms}\NormalTok{(}\DataTypeTok{fixed =} \NormalTok{eve_template, }\DataTypeTok{moving =} \NormalTok{md,}
+    \DataTypeTok{transformlist =} \NormalTok{reg$fwdtransforms)    }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create the GM and WM mask in Eve template space:}
+\NormalTok{mask <-}\StringTok{ }\KeywordTok{readEveSeg}\NormalTok{()}
+
+\CommentTok{# Discard voxels in the CSF}
+\NormalTok{mask[mask ==}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\DecValTok{0} 
+
+\CommentTok{# All voxels in GM (label = 2) and WM (label =3) are kept}
+\NormalTok{mask[mask %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)] <-}\StringTok{ }\DecValTok{1}
+
+\CommentTok{# Create the matrix for MD values at every voxel in the mask}
+\NormalTok{Y.md <-}\StringTok{ }\KeywordTok{images2matrix}\NormalTok{(files.md, }\DataTypeTok{mask=}\NormalTok{mask)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Fit the EB linear model with limma:}
+\KeywordTok{library}\NormalTok{(limma)}
+\NormalTok{fit.md <-}\StringTok{ }\KeywordTok{eBayes}\NormalTok{(}\KeywordTok{lmFit}\NormalTok{(Y.md, }\KeywordTok{model.matrix}\NormalTok{(~gender+age)))}
+
+\CommentTok{# Get moderated t-statistics for gender:}
+\NormalTok{t.md    <-}\StringTok{ }\NormalTok{fit.md$t[,}\DecValTok{2}\NormalTok{]}
+
+\CommentTok{# Store the moderated t-statistics into template space:}
+\NormalTok{img.t.md <-}\StringTok{ }\KeywordTok{remake_img}\NormalTok{(t.md, }\DataTypeTok{img=}\NormalTok{mask, }\DataTypeTok{mask=}\NormalTok{mask)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Get the labels from the WMPM}
+\KeywordTok{library}\NormalTok{(EveTemplate)}
+\NormalTok{map <-}\StringTok{ }\KeywordTok{readEveMap}\NormalTok{()}
+\NormalTok{labels <-}\StringTok{ }\KeywordTok{getEveMapLabels}\NormalTok{()}
+\NormalTok{map_labels <-}\StringTok{ }\NormalTok{labels$text_label[}\KeywordTok{match}\NormalTok{(map, }\KeywordTok{as.numeric}\NormalTok{(labels$integer_label))] }
+
+\CommentTok{# Get x, y and z coordinates of the voxels}
+\NormalTok{coordinates <-}\StringTok{ }\KeywordTok{getXYZ}\NormalTok{(map)}
+
+\CommentTok{# Create a data frame containing the results and labels}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{t_gender=}\KeywordTok{as.vector}\NormalTok{(img.t.md), }\DataTypeTok{label =} \KeywordTok{as.vector}\NormalTok{(map_labels))}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(results, coordinates)}
+
+\CommentTok{# Remove unlabeled voxels and sort  }
+\NormalTok{results <-}\StringTok{ }\NormalTok{results[results$label!=}\StringTok{"background"}\NormalTok{,]}
+\NormalTok{results <-}\StringTok{ }\NormalTok{results[}\KeywordTok{order}\NormalTok{(-}\KeywordTok{abs}\NormalTok{(results$t_gender)),]}
+
+\CommentTok{# Display the first few rows of results}
+\KeywordTok{head}\NormalTok{(results)}
+         \NormalTok{t_gender             label   x   y  z}
+\DecValTok{2298041} \NormalTok{-}\FloatTok{15.88617} \NormalTok{hippocampus_right  }\DecValTok{65} \DecValTok{111} \DecValTok{59}
+\DecValTok{1984593} \NormalTok{-}\FloatTok{14.98982}  \NormalTok{hippocampus_left }\DecValTok{109} \DecValTok{115} \DecValTok{51}
+\DecValTok{1984413} \NormalTok{-}\FloatTok{14.96482}  \NormalTok{hippocampus_left }\DecValTok{110} \DecValTok{114} \DecValTok{51}
+\DecValTok{2298042} \NormalTok{-}\FloatTok{14.77591} \NormalTok{hippocampus_right  }\DecValTok{66} \DecValTok{111} \DecValTok{59}
+\DecValTok{3043064} \NormalTok{-}\FloatTok{14.77390}     \NormalTok{thalamus_left  }\DecValTok{92} \DecValTok{104} \DecValTok{78}
+\DecValTok{1984774} \NormalTok{-}\FloatTok{14.76050}  \NormalTok{hippocampus_left }\DecValTok{109} \DecValTok{116} \DecValTok{51}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Read the Eve Template, brain only}
+\NormalTok{template <-}\StringTok{ }\KeywordTok{readEve}\NormalTok{(}\StringTok{"Brain"}\NormalTok{)}
+
+\CommentTok{# Set the plotting parameters}
+\NormalTok{bound <-}\StringTok{ }\KeywordTok{max}\NormalTok{(}\KeywordTok{abs}\NormalTok{(t.md))}
+\NormalTok{xyz <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{77}\NormalTok{,}\DecValTok{114}\NormalTok{,}\DecValTok{84}\NormalTok{)}
+\NormalTok{mfrow <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{myColors <-}\StringTok{ }\KeywordTok{rev}\NormalTok{(}\KeywordTok{colorRampPalette}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"grey95"}\NormalTok{, }\StringTok{"red"}\NormalTok{))(}\DecValTok{255}\NormalTok{))}
+\NormalTok{ybreaks  <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(-bound, bound, }\DataTypeTok{length.out=}\KeywordTok{length}\NormalTok{(myColors)+}\DecValTok{1}\NormalTok{)}
+\NormalTok{colors <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"orange"}\NormalTok{, }\StringTok{"yellow"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"firebrick"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"deepskyblue3"}\NormalTok{)}
+
+\CommentTok{# Panel a: plot the Eve template space}
+\KeywordTok{ortho2}\NormalTok{(template, }\DataTypeTok{mfrow =} \NormalTok{mfrow, }\DataTypeTok{xyz =} \NormalTok{xyz)}
+
+\CommentTok{# Panel b: plot the t-statistics for MD maps}
+\KeywordTok{ortho2}\NormalTok{(template, }\DataTypeTok{y=}\NormalTok{img.t.md, }\DataTypeTok{mfrow=}\NormalTok{mfrow, }\DataTypeTok{xyz=}\NormalTok{xyz, }
+    \DataTypeTok{col.y =} \NormalTok{myColors, }\DataTypeTok{ybreaks=}\NormalTok{ybreaks, }\DataTypeTok{ycolorbar=}\OtherTok{TRUE}\NormalTok{)}
+
+\CommentTok{# Focus on 6 anatomical WM regions }
+\NormalTok{map_roi <-}\StringTok{ }\KeywordTok{c}\NormalTok{(map)}
+\NormalTok{map_roi[!map_roi %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{149}\NormalTok{,}\DecValTok{61}\NormalTok{, }\DecValTok{147}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{115}\NormalTok{, }\DecValTok{27}\NormalTok{)] <-}\StringTok{ }\DecValTok{0}
+\NormalTok{map_roi =}\StringTok{ }\NormalTok{plyr::}\KeywordTok{mapvalues}\NormalTok{(}\DataTypeTok{x =} \NormalTok{map_roi, }
+        \DataTypeTok{from =} \KeywordTok{c}\NormalTok{(}\DecValTok{149}\NormalTok{, }\DecValTok{61}\NormalTok{, }\DecValTok{147}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{115}\NormalTok{, }\DecValTok{27}\NormalTok{),}
+        \DataTypeTok{to =} \DecValTok{1}\NormalTok{:}\DecValTok{6}\NormalTok{)}
+\NormalTok{map_roi =}\StringTok{ }\KeywordTok{niftiarr}\NormalTok{(map, map_roi)}
+
+\CommentTok{#Panel c: plot the 6 selected regions}
+\KeywordTok{ortho2}\NormalTok{(map, }\DataTypeTok{y=}\NormalTok{map_roi, }\DataTypeTok{mfrow=}\NormalTok{mfrow, }\DataTypeTok{xyz=}\NormalTok{xyz, }\DataTypeTok{col.y=}\NormalTok{colors)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
